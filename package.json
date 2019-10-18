@@ -1,6 +1,6 @@
 {
   "name": "any-progress",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "开关进度条",
   "main": "app.js",
   "scripts": {
@@ -13,7 +13,8 @@
     "url": "git+https://github.com/hiNISAL/any-progress.git"
   },
   "keywords": [
-    "progress"
+    "progress",
+    "进度条"
   ],
   "author": "NISAL",
   "license": "MIT",
