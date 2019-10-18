@@ -1,6 +1,6 @@
 # AnyProgress
 
-元素顶部进度条
+元素顶部进度条。
 
 ## 安装
 
@@ -33,6 +33,12 @@ setTimeout(() => {
   new AnyProgress().start();  
 </script>
 ```
+
+## Q & A
+
+- 提供了`el`配置项目但是没出现在目标元素的顶部
+
+`检查目标元素的position属性，必须继承或者具有relative、fixed、absolute等定位属性`
 
 ## 详细
 
