@@ -112,7 +112,6 @@ import { getDefaultOptions, setStyle } from './helpers';
   }
 
   public start() {
-    console.log(this.timer);
     if (this.timer) return this;
 
     this.el.style.display = 'block';

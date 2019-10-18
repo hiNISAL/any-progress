@@ -1,7 +1,7 @@
 {
   "name": "any-progress",
-  "version": "1.0.3",
-  "description": "开关进度条",
+  "version": "1.0.4",
+  "description": "元素顶部快速开关进度条",
   "main": "./dist/any-progress.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.config.production.js",
