@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: calc(100% - 32px);
+      margin: 16px;
+      margin-top: 18px;
+      background: #efefef;
+      height: 200px;
+      position: relative;
+    }
+
+    .container .box {
+      position: absolute;
+      top: 32px;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      background: #e1e1e1;
+    }
+
+    .stop-demo {
+      background: #cdcdcd;
+      margin: 16px;
+      height: 20px;
+      height: 200px;;
+      position: relative;
+    }
+  </style>
+<script type="text/javascript" src="any-progress.js"></script></head>
+<body>
+  <div>done</div>
+
+  <div class="container">
+    in html element
+    <div class="box">
+      finish
+    </div>
+  </div>
+
+  <div class="stop-demo">
+    stop
+  </div>
+  <script>
+    var delayDone = function(ap, time) {
+      setTimeout(function() {
+        ap.done();
+      }, time);
+    };
+
+    var ap1 = new AnyProgress();
+    ap1.start();
+    delayDone(ap1, 3000);
+
+    var ap2 = new AnyProgress({
+      el: '.container',
+      color: 'pink',
+    });
+
+    delayDone(ap2.start(), 6000);
+
+    var ap3 = new AnyProgress({
+      el: '.box',
+      color: 'green',
+      shadow: 'l5',
+    });
+
+    ap3.start();
+
+    setTimeout(function() {
+      ap3.finish();
+    }, 4000);
+
+    var ap4 = new AnyProgress({
+      el: '.stop-demo',
+    });
+
+    ap4.start();
+    
+    setTimeout(function() {
+      ap4.stop();
+    }, 2000);
+  </script>
+</body>
+</html>
