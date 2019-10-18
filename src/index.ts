@@ -13,6 +13,9 @@ import { getDefaultOptions, setStyle } from './helpers';
     this.initElement();
   }
 
+  /**
+   * 获取要插入进度条的目标dom
+   */
   private getContainer(): HTMLElement {
     if (this.options.el === 'document') {
       return document.body;
@@ -21,10 +24,16 @@ import { getDefaultOptions, setStyle } from './helpers';
     return document.querySelector(this.options.el!) || document.body;
   }
 
+  /**
+   * 初始化配置项
+   */
   private initOptions() {
     this.options = getDefaultOptions(this.options);
   }
 
+  /**
+   * 初始化元素
+   */
   private initElement() {
     const el: HTMLElement = this.getElement();
 
@@ -33,6 +42,9 @@ import { getDefaultOptions, setStyle } from './helpers';
     this.getContainer().appendChild(el);
   }
 
+  /**
+   * 获取要插入到dom中的进度条元素
+   */
   private getElement(): HTMLElement {
     const el = this.el;
     const es = el.style;
@@ -52,14 +64,24 @@ import { getDefaultOptions, setStyle } from './helpers';
     return el;
   }
 
+  /**
+   * 隐藏
+   */
   private hideElement() {
     this.el.style.display = 'none';
   }
 
+  /**
+   * 设置宽度
+   * @param width 
+   */
   private setElementWidth(width: string) {
     this.el.style.width = width;
   }
 
+  /**
+   * 进度条宽度计算
+   */
   private progressStart() {
     this.timer = setInterval(() => {
       let curWidth: number = parseInt(this.el.style.width!, 10);
@@ -91,18 +113,27 @@ import { getDefaultOptions, setStyle } from './helpers';
     }, 200) as any;
   }
 
+  /**
+   * 清空定时器
+   */
   private cleanTimer() {
     clearInterval(this.timer!);
 
     this.timer = null;
   }
 
+  /**
+   * 暂停
+   */
   public pause() {
     this.cleanTimer();
 
     return this;
   }
 
+  /**
+   * 停止
+   */
   public stop() {
     this.cleanTimer();
 
@@ -111,6 +142,9 @@ import { getDefaultOptions, setStyle } from './helpers';
     return this;
   }
 
+  /**
+   * 开始
+   */
   public start() {
     if (this.timer) return this;
 
@@ -123,6 +157,9 @@ import { getDefaultOptions, setStyle } from './helpers';
     return this;
   }
 
+  /**
+   * 结束
+   */
   public finish() {
     this.pause();
     this.el.style.width = '100%';
@@ -130,6 +167,10 @@ import { getDefaultOptions, setStyle } from './helpers';
     return this;
   }
 
+  /**
+   * 淡出
+   * @param fn
+   */
   public fadeOut(fn = (...args) => {}) {
     setTimeout(() => {
       this.el.style.transition = 'all .3s ease';
@@ -143,6 +184,9 @@ import { getDefaultOptions, setStyle } from './helpers';
     return this;
   }
 
+  /**
+   * 完成
+   */
   public done() {
     this.cleanTimer();
 

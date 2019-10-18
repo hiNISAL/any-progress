@@ -1,5 +1,6 @@
 const merge = require('webpack-merge');
 const base = require('./webpack.config.base');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(base, {
   mode: 'development',
@@ -8,4 +9,10 @@ module.exports = merge(base, {
     host: 'localhost',
     open: true,
   },
+  plugins: [
+    new HTMLWebpackPlugin({
+      template: _('../index.html'),
+      inject: 'head',
+    }),
+  ],
 });

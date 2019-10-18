@@ -1,6 +1,5 @@
 const { resolve } = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 const _ = path => resolve(__dirname, path);
@@ -77,10 +76,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new HTMLWebpackPlugin({
-      template: _('../index.html'),
-      inject: 'head',
-    }),
     new FriendlyErrorsWebpackPlugin(),
     new CleanWebpackPlugin(
       {

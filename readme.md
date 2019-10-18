@@ -123,7 +123,7 @@ new AnyProgress().done();
 
 ### finish
 
-进度条直接到100%，但是依然保留在界面上
+进度条直接到100%，但是依然显示在界面上
 
 ``` js
 new AnyProgress().done();
