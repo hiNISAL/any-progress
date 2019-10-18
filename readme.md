@@ -157,6 +157,8 @@ setTimeout(() => {
 
 淡出进度条
 
+接受一个参数，参数为一个函数，在淡出结束后被调用。
+
 ``` js
 const ap = new AnyProgress().start();
 
@@ -164,7 +166,9 @@ setTimeout(() => {
   ap.pause();
 
   setTimeout(() => {
-    ap.fadeOut();
+    ap.fadeOut(() => {
+      console.log('after fadeout!')
+    });
   }, 1000);
 }, 2000);
 ```

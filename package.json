@@ -1,12 +1,14 @@
 {
   "name": "any-progress",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "description": "元素顶部快速开关进度条，适用移动端、PC端。",
   "main": "./dist/any-progress.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.config.production.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.config.dev.js",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "ref": "node ./build/reference.js",
+    "release": "npm run build && npm run ref"
   },
   "repository": {
     "type": "git",
