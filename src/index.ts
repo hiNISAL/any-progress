@@ -109,6 +109,7 @@ import { getDefaultOptions, setStyle } from './helpers';
     if (this.timer) return this;
 
     this.el.style.width = '0';
+    this.el.style.display = 'block';
 
     this.progressStart();
 
