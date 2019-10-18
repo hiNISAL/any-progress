@@ -1,6 +1,6 @@
 {
   "name": "any-progress",
-  "version": "1.1.4",
+  "version": "1.1.6",
   "description": "元素顶部快速开关进度条，适用移动端、PC端。",
   "main": "./dist/any-progress.js",
   "scripts": {
