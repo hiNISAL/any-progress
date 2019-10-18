@@ -91,14 +91,20 @@ import { getDefaultOptions, setStyle } from './helpers';
     }, 200) as any;
   }
 
-  public pause() {
+  private cleanTimer() {
     clearInterval(this.timer!);
+
+    this.timer = null;
+  }
+
+  public pause() {
+    this.cleanTimer();
 
     return this;
   }
 
   public stop() {
-    clearInterval(this.timer!);    
+    this.cleanTimer();
 
     this.hideElement();
 
@@ -106,10 +112,12 @@ import { getDefaultOptions, setStyle } from './helpers';
   }
 
   public start() {
+    console.log(this.timer);
     if (this.timer) return this;
 
-    this.el.style.width = '0';
     this.el.style.display = 'block';
+    this.el.style.opacity = '1';
+    this.el.style.width = '0';
 
     this.progressStart();
 
@@ -137,7 +145,7 @@ import { getDefaultOptions, setStyle } from './helpers';
   }
 
   public done() {
-    clearInterval(this.timer!);
+    this.cleanTimer();
 
     this.finish();
     
