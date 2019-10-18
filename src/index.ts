@@ -1,59 +1,149 @@
-import EDITOR_CONFIG from './config/editor.config';
-import EditorUI from './modules/EditorUI/index';
-import NativePlugin from './NativePlugin';
+import { Options } from './types';
+import { getDefaultOptions, setStyle } from './helpers';
 
-class AnyEditor {
-  static config = EDITOR_CONFIG;
+ class AnyProgress {
+  private el: HTMLElement = document.createElement('div');
 
-  private uiContainer: null|EditorUI = null;
+  private timer: null|number = null;
 
-  constructor() {
+  constructor(
+    private options: Options,
+  ) {
+    this.initOptions();
+    this.initElement();
   }
 
-  /**
-   * 创建编辑器
-   * @param container 编辑器容器
-   */
-  public create(container: HTMLElement) {
-    const initInnerHTML: string = container.innerHTML;
+  private getContainer(): HTMLElement {
+    if (this.options.el === 'document') {
+      return document.body;
+    }
 
-    this.initUI({
-      plugins: NativePlugin,
-    }, initInnerHTML);
-
-    container.innerHTML = '';
-    container.appendChild(this.uiContainer!.dom!);
+    return document.querySelector(this.options.el!) || document.body;
   }
 
-  /**
-   * 初始化编辑器的ui
-   * @param config 
-   * @param initHTML 
-   */
-  private initUI(config, initHTML) {
-    this.uiContainer = new EditorUI(config, initHTML, this);
+  private initOptions() {
+    this.options = getDefaultOptions(this.options);
   }
 
-  /**
-   * 获取html内容
-   */
-  public get html() {
-    return this.uiContainer!.dom!.outerHTML;
+  private initElement() {
+    const el: HTMLElement = this.getElement();
+
+    this.el = el;
+
+    this.getContainer().appendChild(el);
   }
 
-  /**
-   * 设置html内容
-   */
-  public set html(html: string) {
-    this.uiContainer!.setContent(html);
+  private getElement(): HTMLElement {
+    const el = this.el;
+    const es = el.style;
+
+    es.zIndex = String(this.options.zIndex)!;
+    es.backgroundColor = this.options.color!;
+    es.position = 'absolute';
+    es.top = '0';
+    es.left = '0';
+    es.height = '3px';
+    es.width = '0%';
+    es.transition = 'all .2s linear';
+    es.boxShadow = this.options.shadow!;
+
+    setStyle(el, this.options.style!);
+
+    return el;
   }
 
-  /**
-   * html-setter的语法糖
-   */
-  public setHTML(html: string) {
-    this.uiContainer!.setContent(html);
+  private hideElement() {
+    this.el.style.display = 'none';
+  }
+
+  private setElementWidth(width: string) {
+    this.el.style.width = width;
+  }
+
+  private progressStart() {
+    this.timer = setInterval(() => {
+      let curWidth: number = parseInt(this.el.style.width!, 10);
+
+      let base = [0, 0];
+
+      if (curWidth <= 20) {
+        base = [1, 2];
+      } else if (curWidth <= 40) {
+        base = [.8, 1.3];
+      } else if (curWidth <= 60) {
+        base = [.6, 1.2];
+      } else if (curWidth <= 80) {
+        base = [.4, 1.1];
+      } else if (curWidth <= 90) {
+        base = [.1, 0];
+      } else if (curWidth >= 97) {
+        this.pause();
+      }
+
+      let width: number = base[0] + (Math.floor(Math.random() * base[1]) + 1);
+
+      if (width>= 97) {
+        curWidth = 0;
+        width = 99.5
+      };
+
+      this.setElementWidth(`${curWidth + width}%`);
+    }, 200) as any;
+  }
+
+  public pause() {
+    clearInterval(this.timer!);
+
+    return this;
+  }
+
+  public stop() {
+    clearInterval(this.timer!);    
+
+    this.hideElement();
+
+    return this;
+  }
+
+  public start() {
+    if (this.timer) return this;
+
+    this.el.style.width = '0';
+
+    this.progressStart();
+
+    return this;
+  }
+
+  public finish() {
+    this.pause();
+    this.el.style.width = '100%';
+
+    return this;
+  }
+
+  public fadeOut(fn = (...args) => {}) {
+    setTimeout(() => {
+      this.el.style.transition = 'all .3s ease';
+      this.el.style.opacity = '0';
+      setTimeout(() => {
+        this.hideElement();
+        fn(this);
+      }, 300);
+    }, 300);
+
+    return this;
+  }
+
+  public done() {
+    clearInterval(this.timer!);
+
+    this.finish();
+    
+    this.fadeOut();
+
+    return this;
   }
 }
 
-export default AnyEditor;
+export default AnyProgress;
