@@ -51,17 +51,17 @@ setTimeout(() => {
 ``` js
 new AnyProgress({
   // 颜色
-  color?: string,
+  color?: string = 'blue',
   // z轴层级
-  zIndex?: number,
+  zIndex?: number = 100,
   // 阴影
-  shadow?: string,
+  shadow?: string = 'l2',
   // 高度
-  height?: string,
+  height?: string = '3px',
   // 自定义样式 使用js-style
-  style?: { [propName: string]: any },
+  style?: { [propName: string]: any } = {},
   // 目标元素
-  el?: string,
+  el?: string = 'body',
 });
 ```
 
