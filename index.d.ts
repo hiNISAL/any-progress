@@ -16,6 +16,9 @@ declare class AnyProgress {
 
   /** 进度条直接到100%并且淡出 */
   public done();
+  
+  /** 将元素从DOM中移除 */
+  public remove();
 }
 
 export default AnyProgress;
