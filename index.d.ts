@@ -15,7 +15,7 @@ declare class AnyProgress {
   public fadeOut(callback?: (ap: AnyProgress) => any);
 
   /** 进度条直接到100%并且淡出 */
-  public done();
+  public done(callback?: (ap: AnyProgress) => any);
   
   /** 将元素从DOM中移除 */
   public remove();

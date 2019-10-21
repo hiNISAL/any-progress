@@ -125,8 +125,14 @@ new AnyProgress().start();
 
 进度条直接到100%并且淡出
 
+接受一个参数，参数为一个函数，在淡出结束后被调用。
+
 ``` js
 new AnyProgress().done();
+
+new AnyProgress().done(() => {
+  console.log('done');
+});
 ```
 
 ### finish

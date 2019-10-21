@@ -187,12 +187,12 @@ import { getDefaultOptions, setStyle } from './helpers';
   /**
    * 完成
    */
-  public done() {
+  public done(cb) {
     this.cleanTimer();
 
     this.finish();
     
-    this.fadeOut();
+    this.fadeOut(cb);
 
     return this;
   }
