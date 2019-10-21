@@ -79,38 +79,45 @@ import { getDefaultOptions, setStyle } from './helpers';
     this.el.style.width = width;
   }
 
+  private calcWidth() {
+    let curWidth: number = parseInt(this.el.style.width!, 10);
+
+    let base = [0, 0];
+
+    if (curWidth <= 20) {
+      base = [1, 2];
+    } else if (curWidth <= 40) {
+      base = [.8, 1.3];
+    } else if (curWidth <= 60) {
+      base = [.6, 1.2];
+    } else if (curWidth <= 80) {
+      base = [.4, 1.1];
+    } else if (curWidth <= 90) {
+      base = [.1, 0];
+    } else if (curWidth >= 97) {
+      this.pause();
+    }
+
+    let width: number = base[0] + (Math.floor(Math.random() * base[1]) + 1);
+
+    if (width>= 97) {
+      curWidth = 0;
+      width = 99.5
+    };
+
+    this.setElementWidth(`${curWidth + width}%`);
+  }
+
   /**
    * 进度条宽度计算
    */
   private progressStart() {
-    this.timer = setInterval(() => {
-      let curWidth: number = parseInt(this.el.style.width!, 10);
-
-      let base = [0, 0];
-
-      if (curWidth <= 20) {
-        base = [1, 2];
-      } else if (curWidth <= 40) {
-        base = [.8, 1.3];
-      } else if (curWidth <= 60) {
-        base = [.6, 1.2];
-      } else if (curWidth <= 80) {
-        base = [.4, 1.1];
-      } else if (curWidth <= 90) {
-        base = [.1, 0];
-      } else if (curWidth >= 97) {
-        this.pause();
-      }
-
-      let width: number = base[0] + (Math.floor(Math.random() * base[1]) + 1);
-
-      if (width>= 97) {
-        curWidth = 0;
-        width = 99.5
-      };
-
-      this.setElementWidth(`${curWidth + width}%`);
-    }, 200) as any;
+    setTimeout(() => {
+      this.calcWidth();
+      this.timer = setInterval(() => {
+        this.calcWidth();
+      }, 200) as any;
+    }, 0);
   }
 
   /**
