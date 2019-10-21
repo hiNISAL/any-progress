@@ -196,6 +196,13 @@ import { getDefaultOptions, setStyle } from './helpers';
 
     return this;
   }
+
+  /**
+   * 将进度条元素从dom中移除
+   */
+  public remove() {
+    this.el.parentNode!.removeChild(this.el);
+  }
 }
 
 export default AnyProgress;

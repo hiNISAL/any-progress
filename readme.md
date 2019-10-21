@@ -184,3 +184,17 @@ setTimeout(() => {
   ap.stop();
 }, 1000);
 ```
+
+### remove
+
+将元素从DOM树中移除
+
+``` js
+const ap = new AnyProgress().start();
+
+setTimeout(() => {
+  ap.done(() => {
+    ap.remove();
+  });
+}, 1000);
+```
