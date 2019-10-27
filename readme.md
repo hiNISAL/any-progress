@@ -2,6 +2,8 @@
 
 元素顶部进度条。
 
+[中文](/readme.md) | [english](/readme-en.md)
+
 <img width="375" src="https://github.com/hiNISAL/any-progress/blob/master/public/preview.gif?raw=true" />
 
 ## 安装
