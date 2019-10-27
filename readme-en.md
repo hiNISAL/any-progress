@@ -1,16 +1,18 @@
 # AnyProgress
 
-元素顶部进度条。
+The progress bar at `HTML Element` top.
+
+[中文](/readme.md) | [english](/readme-en.md)
 
 <img width="375" src="https://github.com/hiNISAL/any-progress/blob/master/public/preview.gif?raw=true" />
 
-## 安装
+## Install
 
 ``` shell
 npm i any-progress -S
 ```
 
-## 使用
+## Usage
 
 - ES Module
 
@@ -38,17 +40,15 @@ setTimeout(() => {
 
 ## Q & A
 
-- 提供了`el`配置项目但是没出现在目标元素的顶部
+- The el configuration item is provided, but not available.
 
-`检查目标元素的position属性，必须继承或者具有relative、fixed、absolute等定位属性`
+`Check the CSS properties of the element. Position need relative、absolute or fixed.`
 
 ## 其他支持
 
 ### Vue
 
-> 因为内容比较简单，所以没暴露`install`静态方法作为插件。
-
-在入口文件引入`any-progress`，直接挂到原型上。
+import `any-progress` at the entrance, then mount on the prototype.
 
 ``` js
 import AnyProgress from 'any-progress';
@@ -56,7 +56,7 @@ import AnyProgress from 'any-progress';
 Vue.prototype.$progress = AnyProgress;
 ```
 
-如果使用`typescript`，记得要扩充一下类型。
+If use typescrit, remember to extension the type.
 
 ``` ts
 declare module 'vue/types/vue' {
@@ -66,30 +66,30 @@ declare module 'vue/types/vue' {
 }
 ```
 
-## 详细
+## Details
 
-### 构造函数
+### Constructor
 
-构造函数接受以下参数
+arguments
 
 ``` js
 new AnyProgress({
-  // 颜色
+  // bar color
   color?: string = 'blue',
-  // z轴层级
+  // z-index
   zIndex?: number = 100,
-  // 阴影
+  // shadow
   shadow?: string = 'l2',
-  // 高度
+  // height
   height?: string = '3px',
-  // 自定义样式 使用js-style
+  // custom css, use js-style
   style?: { [propName: string]: any } = {},
-  // 目标元素
+  // target element
   el?: string = 'body',
 });
 ```
 
-其中`color`与`shadow`可以使用预设值。
+`color` and `shadow` have default values can be used.
 
 - color
 
@@ -109,7 +109,6 @@ new AnyProgress({
   color: 'pink',
 });
 
-// 不传递预选项则直接使用传入的值
 new AnyProgress({
   color: '#fafafa',
 });
@@ -131,7 +130,6 @@ new AnyProgress({
   shadow: 'l4',
 });
 
-// 不传递预选项则直接使用传入的值
 new AnyProgress({
   shadow: '1px 2px 5px rgba(0, 0, 0, .1)',
 });
@@ -139,7 +137,7 @@ new AnyProgress({
 
 ### start
 
-进度条开始
+The progress bar starts moving
 
 ``` js
 new AnyProgress().start();
@@ -147,9 +145,7 @@ new AnyProgress().start();
 
 ### done
 
-进度条直接到100%并且淡出
-
-接受一个参数，参数为一个函数，在淡出结束后被调用。
+The progress bar goes to 100% and fades out
 
 ``` js
 new AnyProgress().done();
@@ -161,7 +157,7 @@ new AnyProgress().done(() => {
 
 ### finish
 
-进度条直接到100%，但是依然显示在界面上
+The progress bar goes to 100%, but it still shows up
 
 ``` js
 new AnyProgress().done();
@@ -173,8 +169,6 @@ setTimeout(() => {
 
 ### pause
 
-进度条暂停
-
 ``` js
 new AnyProgress().done();
 
@@ -184,10 +178,6 @@ setTimeout(() => {
 ```
 
 ### fadeOut
-
-淡出进度条
-
-接受一个参数，参数为一个函数，在淡出结束后被调用。
 
 ``` js
 const ap = new AnyProgress().start();
@@ -205,8 +195,6 @@ setTimeout(() => {
 
 ### stop
 
-直接取消进度条
-
 ``` js
 const ap = new AnyProgress().start();
 
@@ -217,7 +205,7 @@ setTimeout(() => {
 
 ### remove
 
-将元素从DOM树中移除
+remove from DOM
 
 ``` js
 const ap = new AnyProgress().start();
