@@ -44,7 +44,7 @@ setTimeout(() => {
 
 `Check the CSS properties of the element. Position need relative、absolute or fixed.`
 
-## 其他支持
+## Support
 
 ### Vue
 

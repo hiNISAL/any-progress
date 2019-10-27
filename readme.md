@@ -44,7 +44,7 @@ setTimeout(() => {
 
 `检查目标元素的position属性，必须继承或者具有relative、fixed、absolute等定位属性`
 
-## Support
+## 其他支持
 
 ### Vue
 
