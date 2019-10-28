@@ -145,7 +145,7 @@ new AnyProgress().start();
 
 ### done
 
-The progress bar goes to 100% and fades out
+The progress bar goes to 100% and fades out, then progress will remove from DOM.
 
 ``` js
 new AnyProgress().done();
@@ -213,6 +213,20 @@ const ap = new AnyProgress().start();
 setTimeout(() => {
   ap.done(() => {
     ap.remove();
+  });
+}, 1000);
+```
+
+### end
+
+It same like `done`, but will not be remove from DOM when fade outed.
+
+``` js
+new AnyProgress().start();
+
+setTimeout(() => {
+  ap.end(() => {
+    console.log('end');
   });
 }, 1000);
 ```

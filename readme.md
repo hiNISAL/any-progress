@@ -149,7 +149,7 @@ new AnyProgress().start();
 
 ### done
 
-进度条直接到100%并且淡出
+进度条直接到100%并且淡出，淡出后进度条从DOM树中移除
 
 接受一个参数，参数为一个函数，在淡出结束后被调用。
 
@@ -227,6 +227,20 @@ const ap = new AnyProgress().start();
 setTimeout(() => {
   ap.done(() => {
     ap.remove();
+  });
+}, 1000);
+```
+
+### end
+
+和`done`差不多，只不过淡出后不会从DOM移除
+
+``` js
+new AnyProgress().start();
+
+setTimeout(() => {
+  ap.end(() => {
+    console.log('end');
   });
 }, 1000);
 ```

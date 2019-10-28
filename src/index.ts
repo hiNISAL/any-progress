@@ -192,9 +192,10 @@ import { getDefaultOptions, setStyle } from './helpers';
   }
 
   /**
-   * 完成
+   * 到达100% 但是不从dom中移除
+   * @param cb 
    */
-  public done(cb) {
+  public end(cb) {
     this.cleanTimer();
 
     this.finish();
@@ -205,10 +206,29 @@ import { getDefaultOptions, setStyle } from './helpers';
   }
 
   /**
+   * 完成
+   */
+  public done(cb) {
+    this.cleanTimer();
+
+    this.finish();
+    
+    this.fadeOut(() => {
+      this.remove();
+
+      cb && cb();
+    });
+
+    return this;
+  }
+
+  /**
    * 将进度条元素从dom中移除
    */
   public remove() {
     this.el.parentNode!.removeChild(this.el);
+
+    return this;
   }
 }
 
