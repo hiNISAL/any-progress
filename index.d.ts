@@ -1,4 +1,8 @@
+import { Options } from './src/types/index';
+
 declare class AnyProgress {
+  new (options: Options);
+
   /** 进度条暂停 */
   public pause();
 
