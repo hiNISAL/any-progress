@@ -1,7 +1,7 @@
 import { Options } from './src/types/index';
 
 declare class AnyProgress {
-  constructor (options: Options);
+  constructor (options?: Options);
 
   /** 进度条暂停 */
   public pause();
