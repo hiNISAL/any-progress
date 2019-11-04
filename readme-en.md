@@ -44,6 +44,10 @@ setTimeout(() => {
 
 `Check the CSS properties of the element. Position need relative、absolute or fixed.`
 
+- There is sth log in `console` panel.
+
+`ver1.4.2 is not remove the debug log before update, use the new version(>1.4.2)`
+
 ## Support
 
 ### Vue

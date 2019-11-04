@@ -44,6 +44,10 @@ setTimeout(() => {
 
 `检查目标元素的position属性，必须继承或者具有relative、fixed、absolute等定位属性`
 
+- 项目使用中发现在`console`面板有没有必要的输出
+
+`1.4.2版本上线前没有剔除测试代码，更新一下版本就行了`
+
 ## 其他支持
 
 ### Vue
