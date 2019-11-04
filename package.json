@@ -1,6 +1,6 @@
 {
   "name": "any-progress",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "元素顶部快速开关进度条，适用移动端、PC端。 The progress bar at `HTML Element` top",
   "main": "./dist/any-progress.js",
   "scripts": {
