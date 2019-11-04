@@ -47,12 +47,9 @@ export const getDefaultOptions = (options: Options) => {
 };
 
 export const setStyle = (el: HTMLElement, style: { [propName: string]: string }) => {
-  console.log(style);
   for (const k in style) {
     if (style.hasOwnProperty(k)) {
       el.style[k] = style[k];
-      console.log(el.style);
-      console.log(style[k]);
     }
   }
 };

@@ -47,17 +47,20 @@ import { getDefaultOptions, setStyle } from './helpers';
    */
   private getElement(): HTMLElement {
     const el = this.el;
-    const es = el.style;
 
-    es.zIndex = String(this.options.zIndex)!;
-    es.backgroundColor = this.options.color!;
-    es.height = this.options.height!;
-    es.position = 'absolute';
-    es.top = '0';
-    es.left = '0';
-    es.width = '0%';
-    es.transition = 'all .2s linear';
-    es.boxShadow = this.options.shadow!;
+    const styles: { [propName: string]: any } = {
+      zIndex: String(this.options.zIndex),
+      backgroundColor: this.options.color,
+      height: this.options.height,
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      width: '0%',
+      transition: 'all .2s linear',
+      boxShadow: this.options.shadow,
+    };
+
+    setStyle(el, styles);
 
     setStyle(el, this.options.style!);
 

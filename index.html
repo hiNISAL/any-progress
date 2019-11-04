@@ -66,6 +66,9 @@
     var ap2 = new AnyProgress({
       el: '.container',
       color: 'pink',
+      style: {
+        transition: 'all .2s ease',
+      },
     });
 
     delayDone(ap2.start(), 6000);
