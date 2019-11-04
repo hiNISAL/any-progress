@@ -51,10 +51,10 @@ import { getDefaultOptions, setStyle } from './helpers';
 
     es.zIndex = String(this.options.zIndex)!;
     es.backgroundColor = this.options.color!;
+    es.height = this.options.height!;
     es.position = 'absolute';
     es.top = '0';
     es.left = '0';
-    es.height = '3px';
     es.width = '0%';
     es.transition = 'all .2s linear';
     es.boxShadow = this.options.shadow!;
