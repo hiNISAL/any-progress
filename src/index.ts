@@ -64,6 +64,8 @@ import { getDefaultOptions, setStyle } from './helpers';
 
     setStyle(el, this.options.style!);
 
+    el.className = '____any-progress-instance';
+
     return el;
   }
 
@@ -76,7 +78,7 @@ import { getDefaultOptions, setStyle } from './helpers';
 
   /**
    * 设置宽度
-   * @param width 
+   * @param width
    */
   private setElementWidth(width: string) {
     this.el.style.width = width;
@@ -196,13 +198,13 @@ import { getDefaultOptions, setStyle } from './helpers';
 
   /**
    * 到达100% 但是不从dom中移除
-   * @param cb 
+   * @param cb
    */
   public end(cb) {
     this.cleanTimer();
 
     this.finish();
-    
+
     this.fadeOut(cb);
 
     return this;
@@ -215,7 +217,7 @@ import { getDefaultOptions, setStyle } from './helpers';
     this.cleanTimer();
 
     this.finish();
-    
+
     this.fadeOut(() => {
       this.remove();
 
